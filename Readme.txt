@@ -6,7 +6,7 @@ If you are windows, you can build the project by running the
 'make' command. 'make clean' will remove the class files.
 
 you can execute the main program by running
-'java main.Main < ../test/test'
+'java main.Main < test/test'
 This will print the intermediate three-address code to the terminal.
 
 
