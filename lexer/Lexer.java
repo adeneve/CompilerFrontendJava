@@ -33,7 +33,7 @@ public class Lexer {
       else break;
     }
 
-    switch(peak)
+    switch(peek)
     {
       case '&':
       if( readch('&')) return Word.and; else return new Token('&');

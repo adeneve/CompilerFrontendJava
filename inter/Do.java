@@ -14,6 +14,6 @@ public class Do extends Stmt {
     int label = newlabel();
     stmt.gen(b,label);
     emitlabel(label);
-    expr..jumping(b, 0);
+    expr.jumping(b, 0);
   }
 }

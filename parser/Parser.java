@@ -10,7 +10,7 @@ public class Parser {
   int used = 0; // storage used for declarations
   public Parser(Lexer l) throws IOException {lex = l; move();}
   void move() throws IOException {look = lex.scan();}
-  void error(String s) { throw new Error("near line "+lex.line+": "+s;)}
+  void error(String s) { throw new Error("near line "+lex.line+": "+s);}
   void match(int t) throws IOException {
     if(look.tag == t) move();
     else error("syntax error");
@@ -54,7 +54,7 @@ public class Parser {
   }
 
   Stmt stmts() throws IOException {
-    if ( look.tag == "}") return Stmt.Null;
+    if ( look.tag == '}') return Stmt.Null;
     else return new Seq(stmt(), stmts());
   }
   Stmt stmt() throws IOException {
@@ -88,13 +88,13 @@ public class Parser {
         donode.init(s1, x);
         Stmt.Enclosing = savedStmt;
         return donode;
-      case Tag.BREAK;
+      case Tag.BREAK:
         match(Tag.BREAK); match(';');
         return new Break();
       case '{':
         return block();
       default:
-        assign();
+        return assign();
     }
   }
 
@@ -147,7 +147,7 @@ public class Parser {
   Expr expr() throws IOException {
     Expr x = term();
     while( look.tag == '+' || look.tag == '-'){
-      Token tok = look;, move(); x = new Arith(tok, x, term());
+      Token tok = look; move(); x = new Arith(tok, x, term());
     }
     return x;
   }
